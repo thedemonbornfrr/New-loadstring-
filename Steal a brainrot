@@ -1,7 +1,7 @@
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/master/source.lua", true))()
 
 local Window = Luna:CreateWindow({
-	Name = "Moonlit sky Hub V1.02.75", -- This Is Title Of Your Window
+	Name = "Moonlit sky Hub V1.03 beta", -- This Is Title Of Your Window
 	Subtitle = nil, -- A Gray Subtitle next To the main title.
 	LogoID = "82795327169782", -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
 	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
@@ -15,7 +15,7 @@ local Window = Luna:CreateWindow({
 
 	KeySystem = true, -- As Of Beta 6, Luna Has officially Implemented A Key System!
 	KeySettings = {
-		Title = "Moonlit sky key V1.02.75",
+		Title = "Moonlit sky key V1.03 beta",
 		Subtitle = "Moonlit sky Key System",
 		Note = "We have the best key system ever kinda",
 		SaveInRoot = false, -- Enabling will save the key in your RootFolder (YOU MUST HAVE ONE BEFORE ENABLING THIS OPTION)
