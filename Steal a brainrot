@@ -1,0 +1,432 @@
+local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/master/source.lua", true))()
+
+local Window = Luna:CreateWindow({
+	Name = "Moonlit sky Hub V1.02.75", -- This Is Title Of Your Window
+	Subtitle = nil, -- A Gray Subtitle next To the main title.
+	LogoID = "82795327169782", -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
+	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
+	LoadingTitle = "Moonlit sky interfaces", -- Header for loading screen
+	LoadingSubtitle = "by Verious", -- Subtitle for loading screen
+
+	ConfigSettings = {
+		RootFolder = nil, -- The Root Folder Is Only If You Have A Hub With Multiple Game Scripts and u may remove it. DO NOT ADD A SLASH
+		ConfigFolder = "Big Hub" -- The Name Of The Folder Where Luna Will Store Configs For This Script. DO NOT ADD A SLASH
+	},
+
+	KeySystem = true, -- As Of Beta 6, Luna Has officially Implemented A Key System!
+	KeySettings = {
+		Title = "Moonlit sky key V1.02.75",
+		Subtitle = "Moonlit sky Key System",
+		Note = "We have the best key system ever kinda",
+		SaveInRoot = false, -- Enabling will save the key in your RootFolder (YOU MUST HAVE ONE BEFORE ENABLING THIS OPTION)
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		Key = {"Moonlit sky verious fly"},
+		SecondAction = {
+			Enabled = true, -- Set to false if you do not want a second action,
+			Type = "Link", -- Link / Discord.
+			Parameter = "https://lootdest.org/s?5sY9xucc" -- If Type is Discord, then put your invite link (DO NOT PUT DISCORD.GG/). Else, put the full link of your key system here.
+		}
+	}
+})
+
+local MainTab = Window:CreateTab({
+	Name = "Main🏠",
+	Icon = "view_in_ar",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
+
+Luna:Notification({ 
+	Title = "Moonlit sky Notifcations",
+	Icon = "notifications_active",
+	ImageSource = "Material",
+	Content = "Your script has Successfully loaded! Thanks for using our scripts --By verious"
+})
+
+local Paragraph = MainTab:CreateParagraph({
+	Title = "Notice!!! ",
+	Text = "This Tab focuses on the player and nothing else"
+})
+
+
+local SecondTab = Window:CreateTab({
+	Name = "Settings⚙️",
+	Icon = "view_in_ar",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
+
+SecondTab:BuildConfigSection() -- Tab Should be the name of the tab you are adding this section to.
+
+local Button = MainTab:CreateButton({
+	Name = "Fly",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+    	  loadstring(game:HttpGet("https://github.com/Sinister-Scripts/Roblox-Exploits/raw/refs/heads/main/FE-Animated-Mobile-Fly"))()
+    	end
+})
+
+local Slider = MainTab:CreateSlider({
+	Name = "Speed",
+	Range = {0, 325}, -- The Minimum And Maximum Values Respectively
+	Increment = 5, -- Basically The Changing Value/Rounding Off
+	CurrentValue = 24, -- The Starting Value
+    	Callback = function(Value)
+    	  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+    	end
+  })
+
+local Slider = MainTab:CreateSlider({
+	Name = "Jumppower",
+	Range = {0, 325}, -- The Minimum And Maximum Values Respectively
+	Increment = 5, -- Basically The Changing Value/Rounding Off
+	CurrentValue = 35, -- The Starting Value
+    	Callback = function(Value)
+    	  game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+    	end
+}, "Slider") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+local ThirdTab = Window:CreateTab({
+	Name = "Misc🖥",
+	Icon = "view_in_ar",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
+
+local Button = ThirdTab:CreateButton({
+	Name = "Infinte yield",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+    	  loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    	end
+})
+
+local FourthTab = Window:CreateTab({
+	Name = "Steal a brainrot",
+	Icon = "view_in_ar",
+	ImageSource = "Material",
+	ShowTitle = true -- This will determine whether the big header text in the tab will show
+})
+
+local Button = FourthTab:CreateButton({
+	Name = "Sky!",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+    		-- Place this LocalScript inside StarterGui
+
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+-- Create the GUI
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "MoonlitSkyFloatGui"
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+local button = Instance.new("TextButton")
+button.Name = "MoonlitSkyFloatButton"
+button.Parent = screenGui
+button.Text = "Moonlit Sky float"
+button.Font = Enum.Font.SourceSansBold
+button.TextSize = 18
+button.TextColor3 = Color3.new(1, 1, 1)
+button.BackgroundColor3 = Color3.fromRGB(40, 40, 60)
+button.BackgroundTransparency = 0.3
+button.Size = UDim2.new(0, 140, 0, 40)
+
+-- Position: Top right, vertically centered in the top right quadrant
+button.AnchorPoint = Vector2.new(1, 0.5)  -- anchor to top right center of button
+button.Position = UDim2.new(1, -10, 0, 30) -- 10 px from right edge, 30 px from top
+
+-- Float function
+local floating = false
+button.MouseButton1Click:Connect(function()
+    if floating then return end -- prevent multiple clicks
+    floating = true
+
+    local floatTime = 1
+    local startDownTime = 0.75
+
+    local upwardVelocity = Instance.new("BodyVelocity")
+    upwardVelocity.MaxForce = Vector3.new(0, math.huge, 0)
+    upwardVelocity.Velocity = Vector3.new(0, 30, 0)
+    upwardVelocity.Parent = humanoidRootPart
+
+    wait(startDownTime)
+
+    upwardVelocity.Velocity = Vector3.new(0, -20, 0)
+
+    wait(floatTime - startDownTime)
+
+    upwardVelocity:Destroy()
+    floating = false
+end)
+
+    	end
+})
+
+local Button = FourthTab:CreateButton({
+	Name = "Esp",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+    		local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function highlightCharacter(character)
+    if not character then return end
+
+    -- Remove old highlight if exists
+    local oldHighlight = character:FindFirstChildOfClass("Highlight")
+    if oldHighlight then
+        oldHighlight:Destroy()
+    end
+
+    -- Create new highlight
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = character
+    highlight.FillColor = Color3.fromRGB(255, 0, 0)       -- Red fill
+    highlight.OutlineColor = Color3.fromRGB(200, 0, 0)    -- Darker red outline
+    highlight.FillTransparency = 0.7                       -- Mostly transparent fill
+    highlight.OutlineTransparency = 0                      -- Fully visible outline
+    highlight.Parent = character
+end
+
+local function onPlayerAdded(player)
+    if player == LocalPlayer then return end
+
+    if player.Character then
+        highlightCharacter(player.Character)
+    end
+
+    player.CharacterAdded:Connect(highlightCharacter)
+end
+
+-- Highlight all existing players
+for _, player in pairs(Players:GetPlayers()) do
+    onPlayerAdded(player)
+end
+
+-- Highlight players who join later
+Players.PlayerAdded:Connect(onPlayerAdded)
+
+    	end
+})
+
+local Button = FourthTab:CreateButton({
+	Name = "No stun",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+    		local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function setAnchored(character, anchored)
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.Anchored = anchored
+        end
+    end
+end
+
+local function onCharacterAdded(character)
+    local humanoid = character:WaitForChild("Humanoid")
+
+    humanoid.StateChanged:Connect(function(oldState, newState)
+        local ragdollStates = {
+            Enum.HumanoidStateType.Physics,
+            Enum.HumanoidStateType.FallingDown,
+            Enum.HumanoidStateType.Ragdoll,
+        }
+
+        local isRagdoll = false
+        for _, state in ipairs(ragdollStates) do
+            if newState == state then
+                isRagdoll = true
+                break
+            end
+        end
+
+        if isRagdoll then
+            setAnchored(character, true)  -- Freeze all parts
+        else
+            setAnchored(character, false) -- Unfreeze
+        end
+    end)
+end
+
+if LocalPlayer.Character then
+    onCharacterAdded(LocalPlayer.Character)
+end
+LocalPlayer.CharacterAdded:Connect(onCharacterAdded)
+
+    	end
+})
+
+local Button = FourthTab:CreateButton({
+	Name = "Inf jump",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+    		local UserInputService = game:GetService("UserInputService")
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+UserInputService.JumpRequest:Connect(function()
+    if humanoid then
+        humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    end
+end)
+
+    	end
+})
+
+local Button = FourthTab:CreateButton({
+	Name = "Godmode",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+    		-- Moonlit Godmode Script (Client-Side Anti-Cheat Block)
+local plr = game:GetService("Players").LocalPlayer
+local char = plr.Character or plr.CharacterAdded:Wait()
+local hum = char:WaitForChild("Humanoid")
+
+-- Godmode Loop
+hum:GetPropertyChangedSignal("Health"):Connect(function()
+	if hum.Health <= 0 then
+		hum.Health = hum.MaxHealth
+		warn("[Moonlit Godmode] Prevented Death!")
+	end
+end)
+
+-- Stop BreakJoints
+char.BreakJoints = function() end
+char:WaitForChild("Humanoid").BreakJointsOnDeath = false
+
+-- Block Character reset
+char:FindFirstChildOfClass("Humanoid").Died:Connect(function()
+	wait(0.1)
+	hum.Health = hum.MaxHealth
+	plr.Character = char
+	warn("[Moonlit Godmode] Respawn Blocked!")
+end)
+
+-- Force keep HumanoidRootPart anchored (optional)
+char:WaitForChild("HumanoidRootPart").Anchored = false
+
+    	end
+})
+
+local Button = FourthTab:CreateButton({
+	Name = "Speed",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+    		-- This script is made to bypass the mini games that changes the player speed like get +1 speed per second
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Num = Instance.new("TextBox")
+local Plus = Instance.new("TextButton")
+local Minus = Instance.new("TextButton")
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+Frame.Size = UDim2.new(0, 200, 0, 100)
+Frame.Position = UDim2.new(0.5, -100, 0.5, -50)
+Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Frame.Parent = ScreenGui
+Frame.Active = true
+Frame.Draggable = true
+
+Num.Size = UDim2.new(0.6, 0, 0.6, 0)
+Num.Position = UDim2.new(0.2, 0, 0.3, 0)
+Num.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Num.TextColor3 = Color3.new(1, 1, 1)
+Num.TextScaled = true
+Num.Font = Enum.Font.SourceSans
+Num.ClearTextOnFocus = true
+Num.Parent = Frame
+
+Plus.Size = UDim2.new(0.2, 0, 0.6, 0)
+Plus.Position = UDim2.new(0.8, 0, 0.3, 0)
+Plus.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+Plus.TextColor3 = Color3.new(1, 1, 1)
+Plus.TextScaled = true
+Plus.Font = Enum.Font.SourceSans
+Plus.Text = "+"
+Plus.Parent = Frame
+
+Minus.Size = UDim2.new(0.2, 0, 0.6, 0)
+Minus.Position = UDim2.new(0, 0, 0.3, 0)
+Minus.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+Minus.TextColor3 = Color3.new(1, 1, 1)
+Minus.TextScaled = true
+Minus.Font = Enum.Font.SourceSans
+Minus.Text = "-"
+Minus.Parent = Frame
+
+local player = game.Players.LocalPlayer
+local number
+local humanoid
+local EditingNum = false
+
+local function UpdateNum()
+    Num.Text = tostring(number)
+    if humanoid then
+        humanoid.WalkSpeed = number
+    end
+end
+
+local function onCharacterAdded(character)
+    humanoid = character:WaitForChild("Humanoid")
+    number = humanoid.WalkSpeed
+    humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+        if humanoid.WalkSpeed ~= number then
+            humanoid.WalkSpeed = number
+        end
+    end)
+    UpdateNum()
+end
+
+player.CharacterAdded:Connect(onCharacterAdded)
+
+if player.Character then
+    onCharacterAdded(player.Character)
+end
+
+Plus.MouseButton1Click:Connect(function()
+    number = number + 1
+    UpdateNum()
+end)
+
+Minus.MouseButton1Click:Connect(function()
+    if number > 0 then
+        number = number - 1
+        UpdateNum()
+    end
+end)
+
+Num.Focused:Connect(function()
+    EditingNum = true
+end)
+
+Num.FocusLost:Connect(function(enterPressed)
+    EditingNum = false
+    if enterPressed then
+        local Value = tonumber(Num.Text)
+        if Value and Value > 0 then
+            number = Value
+            UpdateNum()
+        else
+            UpdateNum()
+        end
+    end
+end)
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Moonlit hub speed",
+    Text = "Made by verious note: use 50-65 speed to not get detected",
+    Duration = 12
+})
+
+UpdateNum()
+    	end
+})
